@@ -1,23 +1,27 @@
 CC=g++
 CFLAGS=-std=c++11 -Wall
 
-main.out: main.o Engenheiro.o Vendedor.o Empregado.o
-	${CC} ${CFLAGS} -o main.out main.o Engenheiro.o Vendedor.o Empregado.o
+BUILD_DIR=./build
+SRC_DIR=./src
+INCLUDE_DIR=./include
 
-main.o: main.cpp
-	${CC} ${CFLAGS} -c main.cpp
+${BUILD_DIR}/main.out: ${BUILD_DIR}/main.o ${BUILD_DIR}/Engenheiro.o ${BUILD_DIR}/Vendedor.o ${BUILD_DIR}/Empregado.o
+	${CC} ${CFLAGS} -I ${INCLUDE_DIR} -o main.out ${BUILD_DIR}/*.o
 
-Engenheiro.o: Engenheiro.cpp Engenheiro.hpp
-	${CC} ${CFLAGS} -c Engenheiro.cpp
+${BUILD_DIR}/main.o: ${SRC_DIR}/main.cpp
+	${CC} ${CFLAGS} -I ${INCLUDE_DIR} -c ${SRC_DIR}/main.cpp -o ${BUILD_DIR}/main.o
 
-Vendedor.o: Vendedor.cpp Vendedor.hpp
-	${CC} ${CFLAGS} -c Vendedor.cpp
+${BUILD_DIR}/Engenheiro.o: ${SRC_DIR}/Engenheiro.cpp ${INCLUDE_DIR}/Engenheiro.hpp
+	${CC} ${CFLAGS} -I ${INCLUDE_DIR} -c ${SRC_DIR}/Engenheiro.cpp -o ${BUILD_DIR}/Engenheiro.o
 
-Empregado.o: Empregado.cpp Empregado.hpp
-	${CC} ${CFLAGS} -c Empregado.cpp
+${BUILD_DIR}/Vendedor.o: ${SRC_DIR}/Vendedor.cpp ${INCLUDE_DIR}/Vendedor.hpp
+	${CC} ${CFLAGS} -I ${INCLUDE_DIR} -c ${SRC_DIR}/Vendedor.cpp -o ${BUILD_DIR}/Vendedor.o
+
+${BUILD_DIR}/Empregado.o: ${SRC_DIR}/Empregado.cpp ${INCLUDE_DIR}/Empregado.hpp
+	${CC} ${CFLAGS} -I ${INCLUDE_DIR} -c ${SRC_DIR}/Empregado.cpp -o ${BUILD_DIR}/Empregado.o
 
 clean:
-	rm *.o *.out
+	rm -f ${BUILD_DIR}/*
 
 test: main.out
 	./main.out > saida.txt
