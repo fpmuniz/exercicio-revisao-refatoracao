@@ -1,3 +1,6 @@
+#ifndef ENGENHEIRO_H
+#define ENGENHEIRO_H
+
 #include "Empregado.hpp"
 
 class Engenheiro : public Empregado {
@@ -7,3 +10,5 @@ class Engenheiro : public Empregado {
 	int projetos;
 
 };
+
+#endif
