@@ -1,13 +1,16 @@
 CC=g++
 CFLAGS=-std=c++11 -Wall
 
-main.out: Engenheiro.o Vendedor.o main.cpp
-	${CC} ${CFLAGS} -o main.out main.cpp Engenheiro.o Vendedor.o Empregado.o
+main.out: main.o Engenheiro.o Vendedor.o Empregado.o
+	${CC} ${CFLAGS} -o main.out main.o Engenheiro.o Vendedor.o Empregado.o
 
-Engenheiro.o: Engenheiro.cpp Engenheiro.hpp Empregado.o
+main.o: main.cpp
+	${CC} ${CFLAGS} -c main.cpp
+
+Engenheiro.o: Engenheiro.cpp Engenheiro.hpp
 	${CC} ${CFLAGS} -c Engenheiro.cpp
 
-Vendedor.o: Vendedor.cpp Vendedor.hpp Empregado.o
+Vendedor.o: Vendedor.cpp Vendedor.hpp
 	${CC} ${CFLAGS} -c Vendedor.cpp
 
 Empregado.o: Empregado.cpp Empregado.hpp
