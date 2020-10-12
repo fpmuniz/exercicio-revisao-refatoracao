@@ -1,3 +1,5 @@
+# Arquivo gerado automaticamente pelo GitHub
+
 # Prerequisites
 *.d
 
@@ -30,3 +32,6 @@
 *.exe
 *.out
 *.app
+
+# Saída de testes
+saida.txt
