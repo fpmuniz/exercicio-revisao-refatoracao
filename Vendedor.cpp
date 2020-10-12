@@ -1,5 +1,5 @@
 #include "Vendedor.hpp"
 
 double Vendedor::quotaTotalAnual() {
-	return quotaMensalVendas * 12;
+	return quotaMensalVendas * MESES_NO_ANO;
 }
