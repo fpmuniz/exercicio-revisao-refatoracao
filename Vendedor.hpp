@@ -3,6 +3,7 @@
 class Vendedor : public Empregado {
 
 	public:
+		double quotaMensalVendas;
 
 		double quotaTotalAnual();
 

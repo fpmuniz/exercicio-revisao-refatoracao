@@ -5,6 +5,5 @@ class Engenheiro : public Empregado {
 	public:
 
 	int projetos;
-	double quotaMensalVendas;
 
 };
